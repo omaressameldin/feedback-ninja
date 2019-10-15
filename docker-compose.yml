@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  ngrok:
+    image: wernight/ngrok
+    network_mode: "host"
+    stdin_open: true
+    tty: true
+    environment:
+      NGROK_PORT: ${PORT}
+  feedback-ninja:
+    build:
+      context: .
+    environment:
+      - PORT=${PORT}
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - type: bind
+        target: /.env
+        source: .env
