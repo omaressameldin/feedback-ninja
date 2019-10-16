@@ -9,6 +9,7 @@ import (
 func ValidateEnvKeys() {
 	GetToken()
 	GetPort()
+	GetFeedbackChannelID()
 }
 
 func GetToken() string {
@@ -27,4 +28,13 @@ func GetPort() string {
 	}
 
 	return port
+}
+
+func GetFeedbackChannelID() string {
+	channelID, err := utils.GetEnv(feedbackChannelKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return channelID
 }
