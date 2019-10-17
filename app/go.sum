@@ -7,6 +7,7 @@ github.com/nlopes/slack v0.6.0 h1:jt0jxVQGhssx1Ib7naAOZEZcGdtIhTzkP0nopK0AsRA=
 github.com/nlopes/slack v0.6.0/go.mod h1:JzQ9m3PMAqcpeCam7UaHSuBuupz7CmpjehYMayT6YOk=
 github.com/omaressameldin/feedback-ninja v0.0.0-20191015134605-10337e4ebda6 h1:ROPz0M8dTLXoVbJfAlnyYOtS6NO5DAPV/VgxI9+oOs0=
 github.com/omaressameldin/feedback-ninja v0.0.0-20191015151139-e1c585388ead h1:hSwFws2p2aIZ/WQDTHDExNHzoLOyzr6JqoYvdBMWW00=
+github.com/omaressameldin/feedback-ninja v0.0.0-20191016144245-49d90b520740 h1:f52/fhk1xRT5FE1sYxBocqgEg+C1wRQulp4AoVKQ+eQ=
 github.com/pkg/errors v0.8.0 h1:WdK/asTD0HN+q6hsWO3/vpuAkAr+tw6aNJNDFFf0+qw=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=

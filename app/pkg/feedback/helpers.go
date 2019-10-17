@@ -11,10 +11,11 @@ type Body struct {
 }
 
 type Event struct {
-	Text    string
-	Channel string
-	user    string
-	BotID   string `json:"bot_id"`
+	Text      string
+	Channel   string
+	User      string
+	BotID     string `json:"bot_id"`
+	Timestamp string `json:"event_ts"`
 }
 
 func decodeBody(r *http.Request) (*Body, error) {
@@ -28,6 +29,6 @@ func decodeBody(r *http.Request) (*Body, error) {
 	return &body, nil
 }
 
-func isSentByBot(e *Event) bool {
-	return e != nil && e.BotID != ""
+func isSentByUser(e *Event) bool {
+	return e != nil && e.BotID == "" && e.User != ""
 }

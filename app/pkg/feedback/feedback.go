@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/nlopes/slack"
 	"github.com/omaressameldin/feedback-ninja/app/pkg/env"
 	"github.com/omaressameldin/feedback-ninja/app/pkg/reply"
 )
@@ -23,22 +24,33 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		if isSentByBot(body.Event) {
+		if !isSentByUser(body.Event) {
 			return
 		}
 
 		if body.Event != nil {
-			err := sendFeedback(body.Event.Text)
+			err := sendConfirmation(body.Event.Channel, body.Event.Text, nil)
 			if err != nil {
 				reply.SendErrorMessage(body.Event.Channel, err.Error())
 			}
-
-			reply.SendSuccessMessage(body.Event.Channel, messageSent)
 		}
 	}
 }
 
-func sendFeedback(message string) error {
-	feedbackChannel := env.GetFeedbackChannelID()
-	return reply.SendInfoMessage(feedbackChannel, message)
+func sendConfirmation(channelID string, message string, time *string) error {
+	return reply.SendActions(channelID,
+		[]slack.Block{
+			slack.NewContextBlock(
+				"",
+				[]slack.MixedElement{
+					slack.NewTextBlockObject("mrkdwn", confirmationMessage, false, false),
+				}...,
+			),
+			slack.NewActionBlock(
+				FeedbackBlockID,
+				reply.PrimaryButton(confirmButton, message),
+				reply.CancelButton(),
+			),
+		},
+	)
 }
