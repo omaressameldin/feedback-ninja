@@ -11,3 +11,4 @@ const AcceptValue = "accept-request"
 
 // text
 const cancelText = "💣Cancel"
+const CancelMessage = "💣 Nothing was sent!"
