@@ -13,11 +13,11 @@ func CancelButton() slack.BlockElement {
 	}
 }
 
-func PrimaryButton(text string) slack.BlockElement {
+func PrimaryButton(text, value string) slack.BlockElement {
 
 	return slack.ButtonBlockElement{
 		ActionID: AcceptValue,
-		Value:    AcceptValue,
+		Value:    value,
 		Text:     slack.NewTextBlockObject("plain_text", text, false, false),
 		Type:     "button",
 		Style:    slack.StylePrimary,
