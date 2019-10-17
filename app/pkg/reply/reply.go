@@ -58,13 +58,10 @@ func SendInfoMessage(channelID string, text string, time *string) error {
 	)
 }
 
-func SendInfoMessage(channelID string, text string) error {
-	return sendReply(channelID, Reply{
-		Attachments: []slack.Attachment{
-			{
-				Text:  text,
-				Color: colorInfo,
-			},
-		},
-	})
+func SendActions(channelID string, blocks []slack.Block, time *string) error {
+	return sendReply(
+		channelID,
+		Reply{Blocks: blocks},
+		time,
+	)
 }
