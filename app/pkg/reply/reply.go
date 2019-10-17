@@ -9,6 +9,7 @@ import (
 
 type Reply struct {
 	Attachments []slack.Attachment `json:"attachments"`
+	Blocks      []slack.Block      `json:"blocks"`
 }
 
 func sendReply(channelID string, r Reply) error {
