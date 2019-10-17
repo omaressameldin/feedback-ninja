@@ -12,41 +12,50 @@ type Reply struct {
 	Blocks      []slack.Block      `json:"blocks"`
 }
 
-func sendReply(channelID string, r Reply) error {
+func sendReply(channelID string, r Reply, time *string) error {
 	token := env.GetToken()
 	api := slack.New(token)
+	var err error
+	options := []slack.MsgOption{
+		slack.MsgOptionAttachments(r.Attachments...),
+		slack.MsgOptionBlocks(r.Blocks...),
+	}
 
-	_, _, err := api.PostMessage(channelID, slack.MsgOptionAttachments(
-		r.Attachments...,
-	))
+	if time != nil {
+		_, _, _, err = api.UpdateMessage(channelID, *time, options...)
+	} else {
+		_, _, err = api.PostMessage(channelID, options...)
+	}
 
 	return err
 }
 
-func SendErrorMessage(channelID string, text string) {
-	err := sendReply(channelID, Reply{
-		Attachments: []slack.Attachment{
-			{
-				Text:  text,
-				Color: colorDanger,
-			},
-		},
-	})
+func SendErrorMessage(channelID string, text string, time *string) {
+	err := sendReply(
+		channelID,
+		Reply{Attachments: []slack.Attachment{{Text: text, Color: colorDanger}}},
+		time,
+	)
 
 	if err != nil {
 		log.Println(err)
 	}
 }
 
-func SendSuccessMessage(channelID string, text string) error {
-	return sendReply(channelID, Reply{
-		Attachments: []slack.Attachment{
-			{
-				Text:  text,
-				Color: colorSuccess,
-			},
-		},
-	})
+func SendSuccessMessage(channelID string, text string, time *string) error {
+	return sendReply(
+		channelID,
+		Reply{Attachments: []slack.Attachment{{Text: text, Color: colorSuccess}}},
+		time,
+	)
+}
+
+func SendInfoMessage(channelID string, text string, time *string) error {
+	return sendReply(
+		channelID,
+		Reply{Attachments: []slack.Attachment{{Text: text, Color: colorInfo}}},
+		time,
+	)
 }
 
 func SendInfoMessage(channelID string, text string) error {
