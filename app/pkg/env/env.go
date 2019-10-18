@@ -8,7 +8,6 @@ import (
 
 func ValidateEnvKeys() {
 	GetToken()
-	GetPort()
 	GetFeedbackChannelID()
 }
 
