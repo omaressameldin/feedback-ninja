@@ -34,6 +34,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 				reply.SendErrorMessage(body.Event.Channel, err.Error())
 			}
 		}
+	} else {
+		w.Write([]byte("Nothing to do here"))
 	}
 }
 
