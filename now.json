@@ -1,0 +1,15 @@
+{
+  "name": "feedback-ninja",
+  "env": {
+    "SLACK_TOKEN": "@slack-token",
+    "FEEDBACK_CHANNEL_ID": "@feedback-channel-id"
+  },
+  "builds": [
+    { "src": "app/pkg/feedback/feedback.go", "use": "@now/go" },
+    { "src": "app/pkg/confirmation/confirmation.go", "use": "@now/go" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "app/pkg/feedback/feedback.go" },
+    { "src": "/confirmation", "dest": "app/pkg/confirmation/confirmation.go" }
+  ]
+}
