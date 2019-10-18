@@ -9,16 +9,16 @@ ARG APP_SRC
 
 WORKDIR $WORKDIR
 
-COPY ${APP_SRC}/go.mod .
-COPY ${APP_SRC}/go.sum .
+COPY ./go.mod .
+COPY ./go.sum .
 
 RUN apk add git &&\
     apk --update add ca-certificates &&\
     go mod download
 
-COPY ${APP_SRC}/. .
+COPY ${APP_SRC}/. ${APP_SRC}/.
 RUN CGO_ENABLED=0 GOOS=linux go test ./... &&\
-    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o $BUILD_FILE .
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o $BUILD_FILE ${APP_SRC}/.
 
 
 FROM bash:4.3.48

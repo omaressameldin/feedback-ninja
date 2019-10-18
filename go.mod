@@ -1,4 +1,4 @@
-module github.com/omaressameldin/feedback-ninja/app
+module github.com/omaressameldin/feedback-ninja
 
 go 1.12
 
