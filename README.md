@@ -1,10 +1,10 @@
 # <img src="./avatar.png" width="48"> Feedback Ninja
 A slack bot to send anonymous feedback
 
-## What this is
+## What This Is
 - A slack bot using GO to send anonymous feedback to a feedback channel
 
-## How to use
+## How to Use
 All you need to do is send a message to the bot and the bot will send that message anonymously to a channel of your choice
 
 - **Send Feedback:**
@@ -14,8 +14,8 @@ All you need to do is send a message to the bot and the bot will send that messa
 - **Cancel Feedback:**
 
 ![help](./gifs/cancel-feedback.gif)
-## How to install
-### What you need before deploying / developing
+## How to Install
+### What You Need Before Deploying / Developing
 - create a new slack app in your slack workspace [link](https://api.slack.com/apps)
 - Create a feedback channel
 
