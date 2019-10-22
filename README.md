@@ -16,8 +16,8 @@ All you need to do is send a message to the bot and the bot will send that messa
 ![help](./gifs/cancel-feedback.gif)
 ## How to Install
 ### What You Need Before Deploying / Developing
-- create a new slack app in your slack workspace [link](https://api.slack.com/apps)
 - Create a feedback channel
+- create a new slack app in your slack workspace [link](https://api.slack.com/apps)
 
 **Note:**  slack token is **Bot User OAuth Access Token** found in [https://api.slack.com/apps/<app_id>/oauth?](https://api.slack.com/apps/<app_id>/oauth?)
 
@@ -34,6 +34,14 @@ All you need to do is send a message to the bot and the bot will send that messa
 - Login using `now login`
 - Add the secrets found in [now.json](now.json) using `now add`
 - Deploy by running `now` or `now --prod`
+- Get your app link from **Zeit Dashboard** and add it to event subscription
+- Add the same url `/confirmation` to interactive messages -> [https://api.slack.com/apps/<app_id>/interactive-messages?](https://api.slack.com/apps/<app_id>/interactive-messages?)
+
+### What You Should Do After Deploying
+- Add a bot user to the slack app
+- Add event subscription for `message.im`
+- Add `chat:write:bot` permission in [https://api.slack.com/apps/<app_id>/oauth?](https://api.slack.com/apps/<app_id>/oauth?)
+- Install app
 
 ### Development
 **After doing the steps in previous section you should do the following for local development / testing**
